@@ -1,0 +1,238 @@
+---
+title: "s18 db project 2"
+author: "Pengdi Xia, Shijing Zhong"
+date: "3/30/2018"
+resource_files:
+- .Renviron
+output:
+  html_notebook:
+    code_folding: hide
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+runtime: shiny
+---
+This is an R Interactive Document, which uses the [R Markdown](http://rmarkdown.rstudio.com/authoring_basics.html) language to generate HTML. For a brief introduction to R Markdown, please review this [video](https://www.youtube.com/watch?v=DNS7i2m4sB0&feature=youtu.be).
+
+#Load Packages
+This [code chunk](http://rmarkdown.rstudio.com/authoring_rcodechunks.html) loads the packages required to run the R code in the document.
+The last line of this code chunk enables document caching, which is expalined at this [link](http://rmarkdown.rstudio.com/authoring_rcodechunks.html).
+
+```{r setup, echo=FALSE}
+library(tidyverse)
+library(shiny)
+library(grid)
+library(data.world)
+library(DT)
+library(shinydashboard)
+library(plotly)
+library(lubridate)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#data.world Project and GitHub Links
+Link for Data.world [Data.world Link](https://data.world/xftnr/s18-db-project-3)
+
+Link for Github [GitHub Link](https://github.com/CannataUT/s18dbproject3-shijing-pengdi)
+
+#data.world "Insight" Links
+[Insight1](https://data.world/xftnr/s18-db-project-3/insights/bbfda09c-afef-4ed6-b402-6fa2c9be0343), 
+[Insight2](https://data.world/xftnr/s18-db-project-3/insights/45495dbd-ff70-4b6b-b7b1-7213fc0d77a4), 
+[Insight3](https://data.world/xftnr/s18-db-project-3/insights/7fd7d39b-aa5c-4cc4-ac6c-ba748362ebf6), 
+[Insight4](https://data.world/xftnr/s18-db-project-3/insights/a2f85623-1ad6-461f-ba3a-56d06837e307), 
+[Insight5](https://data.world/xftnr/s18-db-project-3/insights/e892269f-3cdc-41cd-9bc9-83db588fb139), 
+[Insight6](https://data.world/xftnr/s18-db-project-3/insights/7e0b8b9f-3147-4827-accb-8276afd2fcc1), 
+[Insight7](https://data.world/xftnr/s18-db-project-3/insights/fabfc478-50f2-42ab-b9a2-30c805d75584), 
+[Insight8](https://data.world/xftnr/s18-db-project-3/insights/dbd13042-b511-4d45-9976-8049f3bfbb21), 
+[Insight9](https://data.world/xftnr/s18-db-project-3/insights/24f263b3-fd93-4261-b04c-1f0a4e875ee4),
+[Insight10](https://data.world/xftnr/s18-db-project-3/insights/d4edd838-f839-4340-ad1d-598c790533a8)
+
+
+
+#Create Dataframes
+The sourced code below contains Shiny [eventReactive](https://shiny.rstudio.com/reference/shiny/1.0.1/observeEvent.html) code and queries for the adult database at data.world. The data is saved in variables as functions that return an R dataframe. 
+
+```{r}
+source("DataA.R", local = TRUE)
+```
+
+#Retrieve Relationships from the dataset
+The following query retrieves the distinct relationship name from the adult dataset at data.world and saves the relationship names in the relationship variable.
+```{r}
+project <- "https://data.world/xftnr/s18-db-project-3-dataset" 
+data.world::set_config(cfg_env("DW_API")) 
+relationship <- data.world::query(data.world::qry_sql(
+ "   
+	select distinct relationship
+	from adult_new 
+ "), 
+dataset = project)
+```
+
+#Create a Relationships Variable
+Create a Relationships variable with a string constructed from the selected relationships in the input$selectRelationship_1 variable.This Relationships variable will be used in the title of the ggplot below.
+
+```{r}
+Relationships <- eventReactive(c(input$selectrelationship_1), { 
+  library('stringr')
+  str_c(input$selectrelationship_1, collapse=', ')
+})
+```
+
+#Create Panel with Select List
+The following code creates an input panel for the Interactive Document, which has a [select box](https://shiny.rstudio.com/reference/shiny/latest/selectInput.html) for selecting relationships (notice - choices is set to the relationships variable that was loaded by the previous query) For a complete list of Shiny functions, please see this [link](https://shiny.rstudio.com/reference/shiny/latest/).
+
+```{r}
+inputPanel(
+  selectInput("selectrelationship_1", label = "Select Relationship", choices = relationship, multiple=TRUE, selected=c("Husband", "Not-in-family", "Unmarried", "Other-relative", "Own-child", "Wife" ))
+)
+```
+
+#Render and Display the Age Histograms
+
+Using [ggplotly](https://www.rdocumentation.org/packages/plotly/versions/4.7.1/topics/ggplotly) and [shinydashborad](https://rstudio.github.io/shinydashboard/structure.html#dynamic-content-1)
+
+```{r}
+dashboardPage(
+  dashboardHeader(
+  ),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Adult relationship vs. age Histogram", tabName = "histogram", icon = icon("dashboard"))
+    )
+  ),
+  dashboardBody(
+    tabItems(
+      tabItem(tabName = "histogram",
+        p("Notice this graph is the relation between the relationships and ages. I found that is really interesting because people would have more percentage to have own child during their 20-30 years old. After that the rate drops a lot. The dataset may be not accurate due to the numbers of data for different age but, the percanatge still tells this story."),
+        source("Histogram1UI.R",local = TRUE)$value
+      )
+    )
+  )
+)
+source("Histogram1Server.R", local = TRUE)
+```
+
+#Boxplot examples
+Create Dataframes
+```{r}
+source("DataB.R", local = TRUE)
+source("DataC.R", local = TRUE)
+```
+
+Retrieve workclass from the dataset
+```{r}
+project <- "https://data.world/xftnr/s18-db-project-3-dataset" 
+data.world::set_config(cfg_env("DW_API")) 
+workclass <- data.world::query(data.world::qry_sql(
+ "   
+	select distinct workclass
+	from adult_new 
+ "), 
+dataset = project)
+```
+
+Create a workclass Variable
+```{r}
+Workclasses <- eventReactive(c(input$selectworkclass_1), { 
+  library('stringr')
+  str_c(input$selectworkclass_1, collapse=', ')
+})
+```
+
+Create Panel with Select List
+```{r}
+inputPanel(
+  selectInput("selectworkclass_1", label = "Select Workclass", choices = workclass, multiple=TRUE, selected=c("State-gov", "Self-emp-not-inc", "Private", "Local-gov", "Self-emp-inc", "Without-pay", "Federal-gov", "Never-worked" ))
+)
+```
+
+Render and Display the Boxplot
+```{r}
+dashboardPage(
+  dashboardHeader(
+  ),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Adult workclass by avg hours per week and race Box Plot", tabName = "boxplot", icon = icon("dashboard")),
+      menuItem("Adult workclass by avg hours per week and age histogram", tabName = "boxplot2", icon = icon("dashboard"))
+    )
+  ),
+  dashboardBody(
+    tabItems(
+      tabItem(tabName = "boxplot",
+        p("Notice that most self-employed will work over 45 hours per week in all race. I think it is interesting because this plot shows that different races people will have different characters. For example, the black people will manage their time very well no matter in any work classes. They all work 40 hours per week."),
+        source("Boxplot1UI.R",local = TRUE)$value
+      ),
+      tabItem(tabName = "boxplot2",
+        p("Notice that higher education people got, higher average hours people will work per week. Also they will get tend to get into the big company to work. I think this is interesting because all self-emp-inc will work much more than other workclass no matter what education and it also apply the 'higher education more work' to do rule."),
+        source("Boxplot2UI.R",local = TRUE)$value
+      )
+    )
+  )
+)
+source("Boxplot1Server.R", local = TRUE)
+source("Boxplot2Server.R", local = TRUE)
+```
+
+#Appendix
+##Display Session Information
+The [sessionInfo() fuction](https://cran.r-project.org/web/packages/sessioninfo/sessioninfo.pdf) queries and prints information about the current R session including  information about packages, and from where they were installed.
+```{r}
+sessionInfo()
+```
+##Data Cleaning Code.
+```{r}
+library(tidyverse)
+csvURL <- "https://query.data.world/s/onno6abkrk2w6fo43w23dwm4xxfmmy"
+df <- read_csv(csvURL, col_types = list(
+  age = col_number(),
+  workclass = col_character(),
+  fnlwgt = col_number(),
+  education = col_character(),
+  'education-num' = col_number(),
+  'marital-status' = col_character(),
+  occupation = col_character(),
+  relationship = col_character(),
+  race = col_character(),
+  sex = col_character(),
+  'capital-gain' = col_number(),
+  'capital-loss' = col_number(),
+  'hours-per-week' = col_number(),
+  'native-country' = col_character(),
+  class = col_character()
+))
+# Change .+ and -+ in column names to _
+names(df) <- gsub("\\.+", "_", names(df))
+names(df) <- gsub("-+", "_", names(df))
+# Remove non-printable characters from column names.
+names(df) <- gsub("[^ -~]", "", names(df))
+# Remove null values in the row.
+df <- df[-grep("\\?",df$workclass),]
+# Change ? in country to other
+df$native_country <- gsub("\\?", "Other", df$native_country)
+# Remove non-printable characters from all column values.
+df <- df %>% dplyr::mutate_all(funs(gsub(pattern="[^ -~]", replacement= "", .)))
+# The following write_csv followed immediately by a read_csv, fixes the column types.
+write_csv(df, "tmp.csv") 
+df <- read_csv("tmp.csv", col_types = list(
+  age = col_number(),
+  workclass = col_character(),
+  fnlwgt = col_number(),
+  education = col_character(),
+  education_num = col_number(),
+  marital_status = col_character(),
+  occupation = col_character(),
+  relationship = col_character(),
+  race = col_character(),
+  sex = col_character(),
+  capital_gain = col_number(),
+  capital_loss = col_number(),
+  hours_per_week = col_number(),
+  native_country = col_character(),
+  class = col_character()
+))
+# Now save the cleaned data to new.csv
+write_csv(df, "adult_new.csv")
+# Now load new.csv into a data.world Dataset.
+```

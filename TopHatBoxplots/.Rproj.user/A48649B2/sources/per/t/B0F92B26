@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1521495654041.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3246457359",
+    "id" : "B0F92B26",
+    "lastKnownWriteTime" : 1520184917,
+    "last_content_update" : 1520184917,
+    "path" : "~/Desktop/347/TopHatBoxplots/BoxPlot1UI.R",
+    "project_path" : "BoxPlot1UI.R",
+    "properties" : {
+        "cursorPosition" : "25,48",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

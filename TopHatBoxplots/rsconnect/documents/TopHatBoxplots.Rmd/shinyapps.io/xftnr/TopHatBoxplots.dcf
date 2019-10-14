@@ -1,0 +1,12 @@
+name: TopHatBoxplots
+title: TopHatBoxplots
+username:
+account: xftnr
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 295417
+bundleId: 1258107
+url: https://xftnr.shinyapps.io/TopHatBoxplots/
+when: 1520470917.4305
+asMultiple: FALSE
+asStatic: FALSE

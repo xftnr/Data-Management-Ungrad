@@ -1,0 +1,18 @@
+prefix schema: <http://schema.org/>
+prefix carnot: <http://Carnot.org/>
+
+insert { ?e carnot:hasDepartment ?d }
+where {
+  ?e a carnot:emp .
+  ?e carnot:deptno ?o .
+  ?d a carnot:dept .
+  ?d carnot:deptno ?o 
+}
+;
+insert { ?e carnot:hasManager ?m }
+where {
+  ?e a carnot:emp .
+  ?e carnot:mgr ?o .
+  ?m a carnot:emp .
+  ?m carnot:empno ?o 
+}

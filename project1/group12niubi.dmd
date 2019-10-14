@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="group12niubi" id="26A3C0F0-FEB2-750B-0D33-DB60D1CD3381" version="3.5">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:03:36 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>26A3C0F0-FEB2-750B-0D33-DB60D1CD3381</designId>
+</OSDM_Design>

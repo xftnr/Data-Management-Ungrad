@@ -1,0 +1,45 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="FF79ADCF-7ECE-DF9C-806A-003FAB246A09" name="Data_Ranges">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:10:14 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<engineerTo>
+<item key="B18F83E8-38A5-8274-68B8-CA3CC93D8E79" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Startdate" id="E27E8406-2EF6-8D33-0F04-F7C65C0F061E">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:19:55 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<engineerTo>
+<item key="B18F83E8-38A5-8274-68B8-CA3CC93D8E79" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EndDate" id="18D99D9E-A064-48E9-12D5-E5DDBD910EEC">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:20:08 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<engineerTo>
+<item key="B18F83E8-38A5-8274-68B8-CA3CC93D8E79" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

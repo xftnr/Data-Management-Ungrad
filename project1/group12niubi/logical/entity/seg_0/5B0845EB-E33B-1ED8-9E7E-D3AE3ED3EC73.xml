@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5B0845EB-E33B-1ED8-9E7E-D3AE3ED3EC73" name="Manager">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:15:03 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="B18F83E8-38A5-8274-68B8-CA3CC93D8E79" value="false"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<hierarchicalParent>84DCF65A-25EC-9FCB-EABA-E5FEDB12CE0F</hierarchicalParent>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Title" id="BB084EE3-E39F-99FE-EB06-A03ABFD5FB5C">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:15:15 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<engineerTo>
+<item key="B18F83E8-38A5-8274-68B8-CA3CC93D8E79" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

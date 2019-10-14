@@ -1,0 +1,22 @@
+@prefix schema: <http://schema.org/> .
+@prefix carnot: <http://Carnot.org/>
+
+. carnot:emp1
+rdf:type carnot:emp ;
+carnot:empno "7782"^^xsd:decimal ;
+carnot:ename "CLARK"^^xsd:string ;
+carnot:job "MANAGER"^^xsd:string ;
+carnot:mgr "7839"^^xsd:decimal ;
+carnot:hiredate "9-JUN-1981"^^xsd:string ;
+carnot:sal "2450"^^xsd:string ;
+carnot:deptno "10"^^xsd:decimal ;
+carnot:deptno "20"^^xsd:decimal ;
+. carnot:emp2
+rdf:type carnot:emp ;
+carnot:empno "7839"^^xsd:decimal ;
+carnot:ename "KING"^^xsd:string ;
+carnot:job "PRESIDENT"^^xsd:string ;
+carnot:hiredate "17-NOV-1981"^^xsd:string ;
+carnot:sal "5000"^^xsd:string ;
+carnot:deptno "10"^^xsd:decimal ;
+.

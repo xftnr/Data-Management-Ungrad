@@ -1,0 +1,483 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2BA485FA-F978-FFFB-7A3F-97F7FFC04977" name="RE1_Persons">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>5E0817F6-F4B3-D438-C04F-A33AA2C37904</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<ordsAlias>persons</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Persons_ID" id="B17FC596-738D-1D76-4C4F-96D821BBF6A1">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+<Column name="type" id="E411FED5-5D10-3A90-CF71-D307755B235F">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<constraintName>CH_INH_Persons</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>16</dataTypeSize>
+<listOfValues>
+<valueDef value="Consultant" description="entity Consultant"/>
+<valueDef value="Employee" description="entity Employee"/>
+<valueDef value="Former_Employee" description="entity Former_Employee"/>
+<valueDef value="Former_Manager" description="entity Former_Manager"/>
+<valueDef value="Manager" description="entity Manager"/>
+<valueDef value="Outside_Employee" description="entity Outside_Employee"/>
+</listOfValues>
+<ownDataTypeParameters>16,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isDiscriminatorColumn>true</isDiscriminatorColumn>
+<dependentColumns>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>C2A1F353-2D6A-B3A8-DA73-82D0E0AD187F</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Employee</discriminatorValue>
+<id>9E3933B3-295E-295B-561B-110F82941C81</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>101425A4-E324-C461-BF60-F82FCA6495A9</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Employee</discriminatorValue>
+<id>6C2B1F47-A341-3E03-6094-87836636F1D6</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>CD6D8805-2259-396B-51D1-E98BF1B7D372</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Employee</discriminatorValue>
+<id>5E29CEB3-2AC4-2971-6DC2-090BC2642737</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>B6FA76E0-3DA1-0099-575C-50897B301285</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Manager</discriminatorValue>
+<id>F55FBCEC-D10A-BC12-0FD2-FEB4806D74E1</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>C2A1F353-2D6A-B3A8-DA73-82D0E0AD187F</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Manager</discriminatorValue>
+<id>BBE159A9-D8A4-74D9-EA52-8A112B45E9A6</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>101425A4-E324-C461-BF60-F82FCA6495A9</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Manager</discriminatorValue>
+<id>4EC47BB7-59D9-A144-38BB-CA9B19CA10F7</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>CD6D8805-2259-396B-51D1-E98BF1B7D372</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Manager</discriminatorValue>
+<id>324B1198-4369-DA44-9FD7-1026B4B4E2D5</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>B6FA76E0-3DA1-0099-575C-50897B301285</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Former_Manager</discriminatorValue>
+<id>70FBE077-53D8-C130-9C03-9F2589B8DAF4</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>C2A1F353-2D6A-B3A8-DA73-82D0E0AD187F</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Former_Manager</discriminatorValue>
+<id>ACEFA654-2F6C-829E-C9D8-E4952C45DBD3</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>101425A4-E324-C461-BF60-F82FCA6495A9</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Former_Manager</discriminatorValue>
+<id>FE5B9C19-9417-9837-F66E-5AD4FBA71DEE</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>CD6D8805-2259-396B-51D1-E98BF1B7D372</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Former_Manager</discriminatorValue>
+<id>45CCA597-C34F-6DF8-78F0-3E60555CFDC0</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>5C636A82-08FB-8F33-6945-15619D41DBE1</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Former_Employee</discriminatorValue>
+<id>9FF96C47-C97D-0CF6-03C8-2D6D1FFD33EA</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>AFEE2A65-4380-4900-249A-79DD97B72694</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Former_Employee</discriminatorValue>
+<id>2AE021A9-1C7A-E48E-88F3-2E1ECE381C6A</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>5496F994-45CA-0F2B-3769-CBF8589B2175</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Former_Employee</discriminatorValue>
+<id>59365A0B-BE69-3A94-3B89-F6CE23D26949</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>C2A1F353-2D6A-B3A8-DA73-82D0E0AD187F</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Former_Employee</discriminatorValue>
+<id>1D133003-157E-B608-37F6-FBC31211B188</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>101425A4-E324-C461-BF60-F82FCA6495A9</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Former_Employee</discriminatorValue>
+<id>8CC9AA27-43BF-CFBF-8AD8-A2D8C921E2C2</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>CD6D8805-2259-396B-51D1-E98BF1B7D372</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Former_Employee</discriminatorValue>
+<id>139ED411-4B90-9FC2-B2BC-8DF6EE468AFD</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>B04EE20A-7161-8E03-9A7B-4AE6551B058D</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Outside_Employee</discriminatorValue>
+<id>04B4E851-FAC9-0474-28FD-0E919EC5B88C</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>FF0FB51A-9737-1732-BBED-F907C4A44F35</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Consultant</discriminatorValue>
+<id>E6063DD5-4E3F-FE4F-2C73-377F8B9647E6</id>
+</dependentColumn>
+<dependentColumn class="oracle.dbtools.crest.model.design.relational.Column$DependentColumnDescriptor">
+<columnID>B04EE20A-7161-8E03-9A7B-4AE6551B058D</columnID>
+<dependAsMandatory>false</dependAsMandatory>
+<dependOnValue>true</dependOnValue>
+<discriminatorValue>Consultant</discriminatorValue>
+<id>E32499D3-CE8C-FC1D-C79B-D77C1D02F98B</id>
+</dependentColumn>
+</dependentColumns>
+</Column>
+<Column name="Company_Company_ID" id="6265475B-B358-330C-2076-5585C7440E1F">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A2ED23D3-9A62-C051-9939-CB6C647E9856" referredColumn="E8FFD31C-987F-AB57-054A-602E847463BA"/>
+</associations>
+</Column>
+<Column name="Persons_Persons_ID" id="3AB2F561-188E-631C-B50A-64FB885AF997">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7B2DFDC0-A203-F7D8-5AE9-0F78BF38B608" referredColumn="B17FC596-738D-1D76-4C4F-96D821BBF6A1"/>
+</associations>
+</Column>
+<Column name="Department_Department_ID" id="C9186178-DC89-5642-0124-FD07B8AF46FA">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="77465EDC-857D-F0FD-8CA0-A27757A7DED8" referredColumn="3B9BAFBB-7491-1FAB-F664-E1ABF7F7EC18"/>
+</associations>
+</Column>
+<Column name="Name" id="458869A9-3D8F-E30F-84DE-304456098535">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>1042C34F-9086-FFA1-69FD-B6DF4DD7A90A</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DOB" id="4F356589-AA5E-A931-1C8F-7A74AC1DD6E8">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>9C7B14C1-277A-DDB0-A8D4-C96C6E4F30CA</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Education" id="279E012C-C8B8-1EA6-0E7E-32D29AFE779B">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>0C460F32-AB99-C2B8-973A-B92154293072</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SSNum" id="DB9920B7-4D23-F399-7003-4FA42ED213CE">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>21A70C66-D8EC-F110-331A-6D5340A477A6</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Gender" id="C44AF9CF-844E-C046-DEDB-CCECAC15D64F">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>E53EB3DF-4145-0672-E1A7-4448BF8360CA</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Citizen" id="7CC44428-B0C8-7FCE-3B8E-A94E4967155E">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>223E0FF3-8A2A-0F0C-1EC4-0E0C8AA5826D</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Married" id="4381D1B7-95DE-3E35-ACEB-D3427170BF20">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>A33B53CA-8871-C3A3-7A67-BDF6BFD81896</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Contract" id="B04EE20A-7161-8E03-9A7B-4AE6551B058D">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>B5D26807-6E39-1CA4-A671-9DC5A2F62735</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CV" id="FF0FB51A-9737-1732-BBED-F907C4A44F35">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>E2085718-B5DB-738D-CD54-D3C94B778E1A</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000</dataTypeSize>
+<ownDataTypeParameters>4000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TerminationReason" id="5C636A82-08FB-8F33-6945-15619D41DBE1">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>8972DAAF-99AC-F1A2-5B1D-8F18841ED05F</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LeaveStatus" id="AFEE2A65-4380-4900-249A-79DD97B72694">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>D611E009-D0D2-FB8C-3790-B185F39DD00E</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LastDay" id="5496F994-45CA-0F2B-3769-CBF8589B2175">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>1E9B7D6A-8B8B-FB93-269D-03D5778FC195</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID" id="C2A1F353-2D6A-B3A8-DA73-82D0E0AD187F">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>3D15AE00-1379-1E42-871F-55CE5D44A413</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HireDate" id="101425A4-E324-C461-BF60-F82FCA6495A9">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>2AABB86E-107C-299C-F5CA-E886C9F9612A</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Salary" id="CD6D8805-2259-396B-51D1-E98BF1B7D372">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>E72F83A5-E1A0-28D5-36C8-E22C6A6A775B</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>34</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,34,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Title" id="B6FA76E0-3DA1-0099-575C-50897B301285">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>BB084EE3-E39F-99FE-EB06-A03ABFD5FB5C</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="46D55839-0889-BBFA-DCF1-9C5A4CF0F1B1" name="Persons_PK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="B17FC596-738D-1D76-4C4F-96D821BBF6A1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="12102E17-472E-6A8B-440C-0690F055FB0D" name="Persons_Company_FK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>9BF4EEEB-50DE-9822-5C89-F6DCCC54FEF3</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6265475B-B358-330C-2076-5585C7440E1F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="790F8C05-B39B-A85E-8785-A7856F4E0A24" name="Persons_Persons_FK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>0623986D-C1F0-AD37-2D55-940497EF7205</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3AB2F561-188E-631C-B50A-64FB885AF997"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="30E68CCE-89D5-A927-B15B-47417E9F9C1A" name="Persons_Department_FK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>F8798744-E270-F191-FEA0-FE3C8EE4453C</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C9186178-DC89-5642-0124-FD07B8AF46FA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

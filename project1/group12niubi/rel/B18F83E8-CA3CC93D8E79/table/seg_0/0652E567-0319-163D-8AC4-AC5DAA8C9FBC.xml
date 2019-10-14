@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0652E567-0319-163D-8AC4-AC5DAA8C9FBC" name="RE1_Data_Ranges">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>FF79ADCF-7ECE-DF9C-806A-003FAB246A09</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<ordsAlias>data_ranges</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Startdate" id="EF141F91-E338-38F9-9E52-1AC0CB12E6D6">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>E27E8406-2EF6-8D33-0F04-F7C65C0F061E</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EndDate" id="A57B7927-02C1-77E2-DA6E-FA0DD58B3426">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>18D99D9E-A064-48E9-12D5-E5DDBD910EEC</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Data_Ranges_ID" id="213DEBCC-47C8-3415-290B-C58A01970CDB">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A3BB91AC-1D96-D966-01AF-068B29AC9E92" name="Data_Ranges_PK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="213DEBCC-47C8-3415-290B-C58A01970CDB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

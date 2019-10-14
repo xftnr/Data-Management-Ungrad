@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D316609A-409D-77B1-2216-6FB8787A68CF" name="RE1_Project">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>CA933EE1-7DBB-A202-417F-A41B453C0890</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<ordsAlias>project</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Project_ID" id="0AA1D9FD-F5A7-9E42-1EB1-48368327921C">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+<Column name="Name" id="C0C17304-D2AC-64F5-593A-00E69524461B">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>6E1B6B43-8DA5-C946-A33D-7E471B46E291</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Description" id="2EE8450F-4E92-3395-4C30-A5A062C3F815">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>41C9089B-9098-1806-C98B-D51E30D442DF</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000</dataTypeSize>
+<ownDataTypeParameters>4000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B5D70D43-9956-3345-13DB-C878C085565C" name="Project_PK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="0AA1D9FD-F5A7-9E42-1EB1-48368327921C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

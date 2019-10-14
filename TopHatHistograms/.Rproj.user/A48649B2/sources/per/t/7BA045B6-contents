@@ -1,0 +1,176 @@
+---
+title: "Top Hat Histograms"
+author: "Dr. Cannata"
+resource_files:
+- .Renviron
+output:
+  html_notebook:
+    code_folding: hide
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+runtime: shiny
+---
+This is an R Interactive Document, which has examples of visualizations for Chapter 3 of the "Tableau and R Data Visualization" book.
+
+#Load Packages
+This [code chunk](http://rmarkdown.rstudio.com/authoring_rcodechunks.html) loads the packages required to run the R code in the document.
+The last line of this code chunk enables document caching, which is expalined at this [link](http://rmarkdown.rstudio.com/authoring_rcodechunks.html).
+
+```{r setup, echo=FALSE}
+library(tidyverse)
+library(shiny)
+library(grid)
+library(data.world)
+library(DT)
+library(shinydashboard)
+library(plotly)
+library(lubridate)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Create Dataframes
+The sourced code below contains Shiny [eventReactive](https://shiny.rstudio.com/reference/shiny/1.0.1/observeEvent.html) code and queries for the SuperStore database at data.world. The data is saved in variables as functions that return an R dataframe. These are examples data.world parameterized queries; details for data.world queries can be found at this [link](https://cran.r-project.org/web/packages/data.world/vignettes/query.html). The "?"s in the query are parameters. The parameters are filled in (in order) by the paramQuery$params statement.
+
+```{r}
+source("DataA.R", local = TRUE)
+source("DataB.R", local = TRUE)
+```
+
+#Retrieve Regions from the SuperStore dataset
+The following query retrieves the distinct region names from the SuperStore dataset at data.world and saves the region names in the regions variable.
+```{r}
+project <- "https://data.world/cannata/tophatsuperstore" 
+data.world::set_config(cfg_env("DW_API")) 
+regions <- data.world::query(data.world::qry_sql(
+ "   
+	select distinct region
+	from superstore 
+ "), 
+dataset = project)
+```
+
+#Create a Regions Variable
+Create a Regions variable with a string constructed from the selected regions in the input$selectRegion_1 variable.This Regions variable will be used in the title of the ggplot below.
+
+```{r}
+Regions <- eventReactive(c(input$selectRegion_1), { 
+  library('stringr')
+  str_c(input$selectRegion_1, collapse=', ')
+})
+```
+
+#Create Panel with Select List
+The following code creates an input panel for the Interactive Document, which has a [select box](https://shiny.rstudio.com/reference/shiny/latest/selectInput.html) for selecting regions (notice - choices is set to the regions variable that was loaded by the previous query) For a complete list of Shiny functions, please see this [link](https://shiny.rstudio.com/reference/shiny/latest/).
+
+```{r}
+inputPanel(
+  selectInput("selectRegion_1", label = "Select Region",choices = regions, multiple=TRUE, selected=c("East", "West", "Central", "South"))
+)
+```
+
+#Render and Display the Shipping Costs Histograms
+
+Using [ggplotly](https://www.rdocumentation.org/packages/plotly/versions/4.7.1/topics/ggplotly) and [shinydashborad](https://rstudio.github.io/shinydashboard/structure.html#dynamic-content-1)
+
+```{r}
+dashboardPage(
+  dashboardHeader(
+  ),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Shipping Costs Histogram", tabName = "histogram", icon = icon("dashboard")),
+      menuItem("Shipping Costs Density Plot", tabName = "density", icon = icon("dashboard")),
+      menuItem("Shipping Costs Histogram and Density Plot", tabName = "both", icon = icon("dashboard"))
+    )
+  ),
+  dashboardBody(
+    tabItems(
+      # 1. "Shipping Costs Histogram" tab content
+      tabItem(tabName = "histogram",
+        p("You can actually put some descriptive text here - see https://shiny.rstudio.com/articles/css.html"),
+        source("Histogram1UI.R",local = TRUE)$value
+      ),
+      # 2. "Shipping Costs Density Plot" tab content
+      tabItem(tabName = "density",
+        p("And here."),
+        source("Density1UI.R",local = TRUE)$value
+      ),
+      # 3. "Shipping Costs Histogram and Density Plot" tab content
+      tabItem(tabName = "both",
+        p("And even here."),
+        source("Both1UI.R",local = TRUE)$value
+      )
+    )
+  )
+)
+source("Histogram1Server.R", local = TRUE)
+source("Density1Server.R", local = TRUE)
+source("Both1Server.R", local = TRUE)
+```
+
+```{r}
+dashboardPage(
+  dashboardHeader(
+  ),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Category Histogram", tabName = "categoryHistogram", icon = icon("dashboard")),
+      menuItem("Profit Histogram", tabName = "profitHistogram", icon = icon("dashboard"))
+    )
+  ),
+  dashboardBody(
+    tabItems(
+      # 1. "Category Histogram" tab content
+      tabItem(tabName = "categoryHistogram",
+        p("You can actually put some descriptive text here - see https://shiny.rstudio.com/articles/css.html"),
+        source("categoryHistogramUI.R",local = TRUE)$value
+      ),
+      # 2. "Profit Histogram" tab content
+      tabItem(tabName = "profitHistogram",
+        p("You can actually put some descriptive text here - see https://shiny.rstudio.com/articles/css.html"),
+        source("profitHistogramUI.R",local = TRUE)$value
+      )
+    )
+  )
+)
+source("categoryHistogramServer.R", local = TRUE)
+source("profitHistogramServer.R", local = TRUE)
+```
+
+#Appendix
+##Display Session Information
+The [sessionInfo() fuction](https://cran.r-project.org/web/packages/sessioninfo/sessioninfo.pdf) queries and prints information about the current R session including  information about packages, and from where they were installed.
+```{r}
+sessionInfo()
+```
+##Data Cleaning Code.
+
+```{r}
+library(tidyverse)
+csvURL <- "https://query.data.world/s/bzrpcWkOBHG0Uk7R1379FcjuMYMClo"
+df <- read_csv(csvURL, col_types = list(
+  region = col_character(),
+  region.sales = col_number(),
+  `region-profit` = col_number()
+))
+# Change .+ and -+ in column names to _
+names(df) <- gsub("\\.+", "_", names(df))
+names(df) <- gsub("-+", "_", names(df))
+# Remove non-printable characters from column names.
+names(df) <- gsub("[^ -~]", "", names(df)) 
+# Change null values in the region_sales and region_profit columns to 0.
+df <- df %>% tidyr::replace_na(list(region_sales = 0, region_profit = 0))
+# Remove non-printable characters from all column values.
+df <- df %>% dplyr::mutate_all(funs(gsub(pattern="[^ -~]", replacement= "", .)))
+# The following write_csv followed immediately by a read_csv, fixes the column types.
+write_csv(df, "tmp.csv") # /Users/pcannata/Downloads needs to be changed to a known folder on your machine.
+df <- read_csv("tmp.csv", col_types = list(
+  region = col_character(),
+  region_sales = col_number(),
+  region_profit = col_number()
+))
+# Now save the cleaned data to new.csv
+write_csv(df, "new.csv")
+# Now load new.csv into a data.world Dataset.
+```

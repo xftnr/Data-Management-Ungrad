@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1520463055667.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "496776294",
+    "id" : "304B0EB3",
+    "lastKnownWriteTime" : 1520464669,
+    "last_content_update" : 1520464669575,
+    "path" : "~/Desktop/347/TopHatBoxplots/TopHatBoxplots.Rmd",
+    "project_path" : "TopHatBoxplots.Rmd",
+    "properties" : {
+        "cursorPosition" : "49,10",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

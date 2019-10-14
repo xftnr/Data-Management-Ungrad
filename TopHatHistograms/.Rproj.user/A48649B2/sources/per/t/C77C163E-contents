@@ -1,0 +1,64 @@
+library(tidyverse)
+csvURL <- "https://query.data.world/s/ryog3mypkssowdlkgepgfhlf25l7yp"
+df <- read_csv(csvURL, col_types = list(
+  spam = col_logical(),
+  to.multiple = col_logical(),
+  from = col_logical(),
+  cc = col_number(),
+  sent.email = col_logical(),
+  time = col_datetime(format = "%m/%d/%y %H:%M"),
+  image = col_number(),
+  attach = col_number(),
+  dollar = col_number(),
+  winner = col_character(),
+  inherit = col_number(),
+  viagra = col_number(),
+  password = col_number(),
+  num.char = col_number(),
+  line.breaks = col_number(),
+  format = col_logical(),
+  re.subj = col_logical(),
+  exclaim.subj = col_logical(),
+  urgent.subj = col_logical(),
+  exclaim.mess= col_number(),
+  number= col_character()
+))
+# Change .+ and -+ in column names to _
+names(df) <- gsub("\\.+", "_", names(df))
+names(df) <- gsub("-+", "_", names(df))
+# Remove non-printable characters from column names.
+names(df) <- gsub("[^ -~]", "", names(df)) 
+# Remove null values in the row.
+df <- df %>% drop_na()
+# Change winner column from charater to boolean
+df$winner <- ifelse(df$winner=='yes',1,0)
+# Remove non-printable characters from all column values.
+df <- df %>% dplyr::mutate_all(funs(gsub(pattern="[^ -~]", replacement= "", .)))
+# The following write_csv followed immediately by a read_csv, fixes the column types.
+write_csv(df, "tmp.csv") 
+df <- read_csv("tmp.csv", col_types = list(
+  spam = col_logical(),
+  to_multiple = col_logical(),
+  from = col_logical(),
+  cc = col_number(),
+  sent_email = col_logical(),
+  time = col_datetime(),
+  image = col_number(),
+  attach = col_number(),
+  dollar = col_number(),
+  winner = col_logical(),
+  inherit = col_number(),
+  viagra = col_number(),
+  password = col_number(),
+  num_char = col_number(),
+  line_breaks = col_number(),
+  format = col_logical(),
+  re_subj = col_logical(),
+  exclaim_subj = col_logical(),
+  urgent_subj = col_logical(),
+  exclaim_mess= col_number(),
+  number= col_character()
+))
+# Now save the cleaned data to new.csv
+write_csv(df, "email_new.csv")
+# Now load new.csv into a data.world Dataset.

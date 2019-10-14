@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0B4C44A9-37B8-1CFD-BD9A-F365E45B603B" containerWithKeyObject="AEC20A17-E172-8C6B-993D-9EB07256741F" localFKIndex="D731B215-A9BE-C775-1C30-440FB5E6281D" name="Assignment_Data_Ranges_FK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:26:51 UTC</createdTime>
+<generatorID>CD17DFE8-6037-891C-4029-E97EA424843D</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<referredTableLongName>Data_Ranges</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>0652E567-0319-163D-8AC4-AC5DAA8C9FBC</referredTableID>
+<keyObject>A3BB91AC-1D96-D966-01AF-068B29AC9E92</keyObject>
+<referredKeyID>A3BB91AC-1D96-D966-01AF-068B29AC9E92</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Data_Ranges_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,26 @@
+library(tidyverse)
+csvURL <- "https://query.data.world/s/5keato5ovavf3ktwlvog2ikc2vsz33"
+df <- read_csv(csvURL, col_types = list(
+  region = col_character(),
+  region.sales = col_number(),
+  `region-profit` = col_number()
+))
+# Change .+ and -+ in column names to _
+names(df) <- gsub("\\.+", "_", names(df))
+names(df) <- gsub("-+", "_", names(df))
+# Remove non-printable characters from column names.
+names(df) <- gsub("[^ -~]", "", names(df)) 
+# Change null values in the region_sales and region_profit columns to 0.
+df <- df %>% tidyr::replace_na(list(region_sales = 0, region_profit = 0))
+# Remove non-printable characters from all column values.
+df <- df %>% dplyr::mutate_all(funs(gsub(pattern="[^ -~]", replacement= "", .)))
+# The following write_csv followed immediately by a read_csv, fixes the column types.
+write_csv(df, "tmp.csv")
+df <- read_csv("tmp.csv", col_types = list(
+  region = col_character(),
+  region_sales = col_number(),
+  region_profit = col_number()
+))
+# Now save the cleaned data to new.csv
+write_csv(df, "new.csv")
+# Now load new.csv into a data.world Dataset.

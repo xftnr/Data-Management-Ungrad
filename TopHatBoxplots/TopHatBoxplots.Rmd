@@ -1,0 +1,292 @@
+---
+title: "Top Hat BoxPlots"
+author: "Dr. Cannata"
+resource_files:
+- .Renviron
+output:
+  html_notebook:
+    code_folding: hide
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+runtime: shiny
+---
+This is an R Interactive Document, which uses the [R Markdown](http://rmarkdown.rstudio.com/authoring_basics.html) language to generate HTML. For a brief introduction to R Markdown, please review this [video](https://www.youtube.com/watch?v=DNS7i2m4sB0&feature=youtu.be).
+
+#Load Packages
+This [code chunk](http://rmarkdown.rstudio.com/authoring_rcodechunks.html) loads the packages required to run the R code in the document.
+The last line of this code chunk enables document caching, which is expalined at this [link](http://rmarkdown.rstudio.com/authoring_rcodechunks.html).
+
+Here's what's loaded:  
+library(tidyverse)  
+library(shiny)  
+library(grid)  
+library(data.world)  
+library(DT)  
+library(shinydashboard)  
+library(plotly)  
+library(lubridate)  
+
+```{r setup, echo=FALSE}
+library(tidyverse)
+library(shiny)
+library(grid)
+library(data.world)
+library(DT)
+library(shinydashboard)
+library(plotly)
+library(lubridate)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#data.world Project and GitHub Links
+A link for your data.world Project should go in this Section.
+
+A link for your GitHub Classroom Repository should go in this Section.
+
+#data.world "Insight" Links
+Here's how to insert a data.world "Insight" link.  
+Click on the data.world "Insight", copy the URL and insert it like this:  
+[Insight](https://data.world/cannata/tophatsuperstoreproject/insights?anchor=https%3A%2F%2Fwww.filepicker.io%2Fapi%2Ffile%2FBlTI0Rn7SJK7wsyxDBuE&id=787cd1d7-a480-453e-ab35-3e06b6c43461&source=sb)
+
+**"Insight" should be spread throughout the document as appropriate.**
+
+#Tableau Workbook Links
+R supports embedded iFrames in its Interactive Documents, and Tableau supports embedding its fully functional tables in iFrames, so this can be used to embed Tableau graphs in Interactive Documents.
+In order to do this, the iframe tag must be included in the .Rmd file outside of a code block, i.e.,
+
+<iframe src="https://public.tableau.com/views/TopHatBoxplots/SalesBoxplots?:showVizHome=no" width="800" height="500"></iframe>
+
+The src url above can be obtained by
+
+* signing into [Tableau Public](https://public.tableau.com/en-us/s/)
+* viewing on the desired workbook
+* click on the "Share" icon at the bottom right
+* copy the URL from the "Link" box (not the Embed Code box)
+
+After you get this URL, you need to strip all existing URL parameters and replace them with this one:
+ 
+" ?:showVizHome=no "  
+This should embed the Tableau graph in an iFrame whose size can be edited within the iFrame tag. I hope this will prove useful.
+
+Note - the embedded Tableau will only show up in an actual browser window, it will not show up in a preview window. 
+
+#Create Dataframes
+The sourced code below contains Shiny [eventReactive](https://shiny.rstudio.com/reference/shiny/1.0.1/observeEvent.html) code and queries for the SuperStore database at data.world. The data is saved in variables as functions that return an R dataframe. These are examples data.world parameterized queries; details for data.world queries can be found at this [link](https://cran.r-project.org/web/packages/data.world/vignettes/query.html). The "?"s in the query are parameters. The parameters are filled in (in order) by the paramQuery$params statement.
+
+```{r}
+source("DataA.R", local = TRUE)
+source("DataB.R", local = TRUE)
+```
+**Each new query should be in its own DataN.R file**  
+As an example, here's the code that is in the DataA.R file:  
+dfA <- eventReactive(c(input$selectRegion_1, input$salesFilter_1), {   
+  project <- "https://data.world/cannata/tophatsuperstore"   
+  data.world::set_config(cfg_env("DW_API"))   
+  paramQuery <- data.world::qry_sql(  
+    "   
+    select region, category, sales  
+    from superstore s  
+    where sales between ? and ? and region in (?, ?, ?, ?)  
+    order by region  
+    ")  
+  paramQuery$params <- c(input$salesFilter_1[1], input$salesFilter_1[2],   input$selectRegion_1[1], input$selectRegion_1[2], input$selectRegion_1[3],   input$selectRegion_1[4])  
+  data.world::query(paramQuery, dataset = project)  
+})  
+
+dfA1 <- eventReactive(c(input$selectRegion_1, input$salesFilter_1, input$yDataMin__1_,   input$yDataMax__1_), {   
+  if( ! is.na(input$yDataMin__1_) & ! is.na(input$yDataMax__1_)) {  
+    dfA() %>% dplyr::filter(between(sales, input$yDataMin__1_, input$yDataMax__1_))  
+  }  
+  else {  
+    dfA()  
+  }  
+})  
+
+#Retrieve Regions from the SuperStore dataset
+The following query retrieves the distinct region names from the SuperStore dataset at data.world and saves the region names in the regions variable.
+```{r}
+project <- "https://data.world/cannata/tophatsuperstore" 
+data.world::set_config(cfg_env("DW_API")) 
+regions <- data.world::query(data.world::qry_sql(
+ "   
+	select distinct region
+	from superstore 
+ "), 
+dataset = project)
+```
+#Create a Regions Variable
+Create a Regions variable with a string constructed from the selected regions in the input$selectRegion_1 variable.This Regions variable will be used in the title of the ggplot below.
+
+```{r}
+Regions <- eventReactive(c(input$selectRegion_1), { 
+  library('stringr')
+  str_c(input$selectRegion_1, collapse=', ')
+})
+```
+
+#Create Panel with Select List
+The following code creates an input panel for the Interactive Document, which has a [select box](https://shiny.rstudio.com/reference/shiny/latest/selectInput.html) for selecting regions (notice - choices is set to the regions variable that was loaded by the previous query) For a complete list of Shiny functions, please see this [link](https://shiny.rstudio.com/reference/shiny/latest/).
+
+```{r}
+inputPanel(
+  selectInput("selectRegion_1", label = "Select Region",choices = regions, multiple=TRUE, selected=c("East", "West", "Central", "South")),
+  sliderInput("salesFilter_1", label = "Sales:", min = 0, max = 100200, value = c(0, 100200), step = 100)
+)
+```
+
+#Render and Display the BoxPlots
+
+Using [ggplotly](https://www.rdocumentation.org/packages/plotly/versions/4.7.1/topics/ggplotly) and [shinydashborad](https://rstudio.github.io/shinydashboard/structure.html#dynamic-content-1)
+
+```{r}
+dashboardPage(
+  dashboardHeader(
+  ),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Category Sales BoxPlot", tabName = "boxplot1", icon = icon("dashboard")),
+      menuItem("Quarter Sales BoxPlot", tabName = "boxplot2", icon = icon("dashboard"))
+    )
+  ),
+  dashboardBody(
+    tabItems(
+      # 1. "Category Sales BoxPlot" tab content
+      tabItem(tabName = "boxplot1",
+        p("You can actually put some descriptive text here - see https://shiny.rstudio.com/articles/css.html"),
+        source("BoxPlot1UI.R",local = TRUE)$value
+      ),
+      # 2. "Quarter Sales BoxPlot" tab content
+      tabItem(tabName = "boxplot2",
+        p("And here."),
+        source("BoxPlot2UI.R",local = TRUE)$value
+      )
+    )
+  )
+)
+source("BoxPlot1Server.R", local = TRUE)
+source("BoxPlot2Server.R", local = TRUE)
+```
+###As an example, here's sample code from BoxPlot2UI.R  
+ # Change "Histogram", all __1_s, and edit tiles below:  
+tabItem(tabName = "Histogram",  
+        tabsetPanel(   
+          tabPanel("Plots"),# To create a tab panel - see https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html  
+          tabPanel("Data",   
+             dataTableOutput('table__1_'),  
+             downloadButton('download__1_',"Download the data")),  
+          tabPanel("Plot Size",   
+             numericInput("plotWidth__1_", "Plot Width (Required)", 1000),  
+             numericInput("plotHeight__1_", "Plot Height (Required)", NA)),  
+          tabPanel("Plot Title",  
+             textInput("title__1_", "Title 1", "Region Shipping Costs"),  
+             numericInput("titleFont__1_", "Title Font", 10)),   
+          tabPanel("Plot Legend",  
+             textInput("legendTitle__1_", "Legend Title", "Regions"),  
+             numericInput("legendTitleSize__1_", "Legend Title Size", 10),  
+             numericInput("legendItemSize__1_", "Legend Item Size", 10),  
+             numericInput("legendKeySize__1_", "Legend Key Size", 5)),   
+          tabPanel("Axis Labels",  
+             textInput("xLabel__1_", "x-Axis Label", "Shipping Costs"),  
+             textInput("yLabel__1_", "y-Axis Label 1", "Shipping Costs Count"),  
+             numericInput("textFont__1_", "textFont", 10)),  
+          tabPanel("Data Size",   
+             numericInput("yDataMin__1_", "yData Minimum (Required)", 0),  
+             numericInput("yDataMax__1_", "yData Maximum (Required)", NA))),  
+        plotlyOutput("Histogram__1_", height=800)  
+)  
+
+
+###As an example, here's sample code from BoxPlot1Server.R  
+ # Change all __1_s, Download information, and edit the plot and ggplotly arguments below:  
+ # Build Download Button and Output DataTable---------------  
+  output$download__1_ <- downloadHandler(  
+    filename = function(){"CategoryBoxplot.csv"},   
+    content = function(fname){  
+      write.csv(dfA1(), fname)  
+    }  
+  )  
+  output$table__1_ <- renderDataTable({  
+    DT::datatable(dfA1() , rownames = FALSE, extensions = list(Responsive = TRUE,   FixedHeader = TRUE)  
+    )  
+  })  
+# ---------------------------------------------------------  
+# Build and Output Throughput Plot ------------------------  
+  output$Histogram__1_ <- renderPlotly({  
+    plot = dfA1() %>% ggplot() +   
+      geom_boxplot(mapping = aes(x = category, y=sales, colour = region)) +  
+      
+      theme_bw() +  
+      theme(plot.title = element_text(size = input$titleFont__1_, face = "bold")) +   
+      theme( # Legend Attributes - see https://github.com/tidyverse/ggplot2/wiki/Legend-Attributes  
+        legend.title=element_text(size=input$legendTitleSize__1_),  
+        legend.text=element_text(size=input$legendItemSize__1_),  
+        legend.key = element_rect(size = input$legendKeySize__1_),  
+        legend.key.size = unit(input$legendKeySize__1_, 'lines')) +  
+      theme(axis.text=element_text(size=input$textFont__1_),  
+            axis.title=element_text(size=input$textFont__1_, face="bold"),  
+            axis.text.x = element_text(angle = 45, hjust = 1))  +  
+      theme(plot.margin=unit(c(2,2,2,2),"cm")) +  
+      scale_y_continuous(labels = scales::comma) + # Disable scientific notation  
+      ggtitle(paste(Regions(), input$title__1_)) +  
+      xlab(input$xLabel__1_) + ylab(input$yLabel__1_) +  
+      theme(axis.title.y = element_text(margin = margin(t = 10, r = 10, b = 10, l = 10))) +  
+      scale_color_discrete(name = input$legendTitle__1_)  
+    
+    if( ! is.na(input$plotWidth__1_) & ! is.na(input$plotHeight__1_))  
+     ggplotly(plot, tooltip = c("sales"), session="knitr", width = input$plotWidth__1_, height = input$plotHeight__1_)  
+    else
+      ggplotly(plot, tooltip = c("sales"), session="knitr")   
+  })  
+# ---------------------------------------------------------
+
+
+#Essential steps to add a new plot to a Dashboard:  
+##1. Copy and change "boxplot1" to "boxplot2" as in bold below:  
+  dashboardSidebar(  
+    sidebarMenu(  
+      menuItem("Category Sales BoxPlot", tabName = "boxplot1", icon = icon("dashboard")),  
+**menuItem("Quarter Sales BoxPlot", tabName = "boxplot2", icon = icon("dashboard"))**    
+       
+##2. Copy and make changes in three places as shown in bold below below:  
+dashboardBody(  
+    tabItems(  
+      # 1. "Category Sales BoxPlot" tab content  
+      tabItem(tabName = "boxplot1",  
+        p("You can actually put some descriptive text here - see https://shiny.rstudio.com/articles/css.html"),  
+        source("BoxPlot1UI.R",local = TRUE)$value  
+      ),  
+      
+**# 2. "Quarter Sales BoxPlot" tab content**  
+**tabItem(tabName = "boxplot2",**  
+p("And here."),  
+**source("BoxPlot2UI.R",local = TRUE)$value**  
+      )  
+    )  
+  )  
+  
+##3. Add Server.R file as shown in bold below:  
+  source("BoxPlot1Server.R", local = TRUE)  
+  source("BoxPlot2Server.R", local = TRUE)  
+  
+##4. Open a BoxPlot1UI.R file, save as a new BoxPlot2UI.R file, and change __N_ to __M_  
+
+##5. Open a BoxPlot1Server.R file, save as a new BoxPlot2Server.R file, and change __N_ to __M_  
+
+# Make a Second Dashboard  
+##1. Copy and Paste the Dashboards chunk above.  
+##2. Remove all but on sidebarMenu item.  
+##3. Rename the source files to new source files as in Steps 2 and 3 above.  
+##4. Create the new UI.R and Server.R files as in Steps 4 and 5 above.  
+##5. Add more sidebarMenu items as outlined above.  
+
+#Appendix
+
+##Display Session Information
+The [sessionInfo() fuction](https://cran.r-project.org/web/packages/sessioninfo/sessioninfo.pdf) queries and prints information about the current R session including  information about packages, and from where they were installed.
+```{r}
+sessionInfo()
+```
+
+##Data Cleaning Code.
+To be addressed in the next Chapter.

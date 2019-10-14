@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="ADC55077-D12D-C7BD-7341-F41B09701AF4" name="RE1_Executes">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<ordsAlias>tasks</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Task_Task_ID" id="79115FA2-99F1-26A8-ED5B-B2982F8C989D">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="005CD294-75AD-6EA1-A874-26CD5BEFEBEF" referredColumn="5A7E3FF5-B338-938E-86DD-EAE92C0F7557"/>
+</associations>
+</Column>
+<Column name="Project_Project_ID" id="4B1B9D40-3EE3-2456-FC9E-EF5C83F5C371">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CEE656D0-D459-4CEA-0418-A8DABCAA2B42" referredColumn="0AA1D9FD-F5A7-9E42-1EB1-48368327921C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5C562DAD-121E-31C9-F543-15C75FBF3419" name="tasks_PK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="79115FA2-99F1-26A8-ED5B-B2982F8C989D"/>
+<colUsage columnID="4B1B9D40-3EE3-2456-FC9E-EF5C83F5C371"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F2E64756-31FE-AC8C-6715-70589D6D2A28" name="tasks_Task_FK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>E0923897-8456-A6C5-DD1E-4F2F8C1A94B0</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="79115FA2-99F1-26A8-ED5B-B2982F8C989D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="392A201F-8947-D612-BE8C-162CED44E644" name="tasks_Project_FK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>E0923897-8456-A6C5-DD1E-4F2F8C1A94B0</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4B1B9D40-3EE3-2456-FC9E-EF5C83F5C371"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

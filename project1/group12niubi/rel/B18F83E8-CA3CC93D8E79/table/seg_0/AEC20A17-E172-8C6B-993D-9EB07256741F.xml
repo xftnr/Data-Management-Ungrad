@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AEC20A17-E172-8C6B-993D-9EB07256741F" name="RE1_Assignment">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>BA0A51FE-76FE-5449-50E4-9ADCCF2AE973</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<ordsAlias>assignment</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Persons_Persons_ID" id="EE6F34BE-1834-34D2-1F0A-84E25D2A5F52">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="41F190EE-66EF-0AFC-0D96-52DDC0E5367A" referredColumn="B17FC596-738D-1D76-4C4F-96D821BBF6A1"/>
+</associations>
+</Column>
+<Column name="Project_Project_ID" id="AF808380-67A1-4F61-9B5E-E2FC9FBC4CDF">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EBF7E6DF-BA67-F4E9-1410-5B6B0AD22A8E" referredColumn="0AA1D9FD-F5A7-9E42-1EB1-48368327921C"/>
+</associations>
+</Column>
+<Column name="Department_Department_ID" id="9CE121F0-69BD-6132-EEBB-C3CB1888CEDE">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DBBE669C-3DA7-7A7C-6351-F866C3B66EDF" referredColumn="3B9BAFBB-7491-1FAB-F664-E1ABF7F7EC18"/>
+</associations>
+</Column>
+<Column name="Status" id="9F7D3FD0-54DA-5582-13A5-58C099427558">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:22:08 UTC</createdTime>
+<generatorID>0632B13F-2044-96A3-6F44-4243E3CA766F</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Data_Ranges_Data_Ranges_ID" id="F27F3E28-70B7-09D7-81B8-C447C80E5840">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:26:51 UTC</createdTime>
+<ownerDesignName>group12niubi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0B4C44A9-37B8-1CFD-BD9A-F365E45B603B" referredColumn="213DEBCC-47C8-3415-290B-C58A01970CDB"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A2BE6F05-59E5-7A47-0624-8569C2734795" name="Assignment_Persons_FK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>F16096DD-A69A-BF9C-1F08-7B91D6BB17BC</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EE6F34BE-1834-34D2-1F0A-84E25D2A5F52"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ADFF91BF-21BA-B4D2-8F93-7A5E124C7158" name="Assignment_Project_FK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>88746B3E-37A3-1FB0-9D23-235BBB8E98BA</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AF808380-67A1-4F61-9B5E-E2FC9FBC4CDF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3B5DE098-C6C6-033C-849A-6B938FFED4E2" name="Assignment_Department_FK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-01-31 22:40:48 UTC</createdTime>
+<generatorID>30E3CA4A-1DDD-0900-E94C-5A31EE58B6E4</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9CE121F0-69BD-6132-EEBB-C3CB1888CEDE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D731B215-A9BE-C775-1C30-440FB5E6281D" name="Assignment_Data_Ranges_FK">
+<createdBy>xiapengdi</createdBy>
+<createdTime>2018-02-05 22:26:51 UTC</createdTime>
+<generatorID>CD17DFE8-6037-891C-4029-E97EA424843D</generatorID>
+<ownerDesignName>group12niubi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F27F3E28-70B7-09D7-81B8-C447C80E5840"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

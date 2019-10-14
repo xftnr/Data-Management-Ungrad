@@ -1,0 +1,28 @@
+@prefix schema: <http://schema.org/> .
+@prefix carnot: <http://Carnot.org/>
+. carnot:dept1
+rdf:type carnot:dept ;
+carnot:deptno "10"^^xsd:decimal ;
+carnot:dname "Accounting"^^xsd:string ;
+carnot:loc "New York"^^xsd:string ;
+schema:address "101 Broadway"^^xsd:string ;
+schema:address "2 Wall Street"^^xsd:string ;
+. carnot:dept2
+rdf:type carnot:dept ;
+carnot:deptno "20"^^xsd:decimal ;
+carnot:dname "Research"^^xsd:string ;
+carnot:loc "Dallas"^^xsd:string ;
+schema:address "Cowboy Lane"^^xsd:string ;
+. carnot:dept3
+rdf:type carnot:dept ;
+carnot:deptno "30"^^xsd:decimal ;
+carnot:dname "Sales"^^xsd:string ;
+carnot:loc "Chicago"^^xsd:string ;
+schema:address "101 Lake Shore Drive"^^xsd:string ;
+. carnot:dept4
+rdf:type carnot:dept ;
+carnot:deptno "40"^^xsd:decimal ;
+carnot:dname "Operations"^^xsd:string ;
+carnot:loc "Boston"^^xsd:string ;
+schema:address "Patriot Way"^^xsd:string ;
+.

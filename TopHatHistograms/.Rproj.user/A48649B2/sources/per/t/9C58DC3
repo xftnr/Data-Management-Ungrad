@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1522099770030.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2965244589",
+    "id" : "9C58DC3",
+    "lastKnownWriteTime" : 1522099795,
+    "last_content_update" : 1522099795,
+    "path" : "~/Desktop/347/TopHatHistograms/.Renviron",
+    "project_path" : ".Renviron",
+    "properties" : {
+        "cursorPosition" : "0,345",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

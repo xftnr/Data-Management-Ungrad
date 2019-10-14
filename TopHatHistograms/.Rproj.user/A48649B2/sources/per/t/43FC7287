@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1522099773660.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2965244589",
+    "id" : "43FC7287",
+    "lastKnownWriteTime" : 1520463766,
+    "last_content_update" : 1520463766,
+    "path" : "~/Desktop/347/TopHatBoxplots/.Renviron",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "0,345",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "sh"
+}
